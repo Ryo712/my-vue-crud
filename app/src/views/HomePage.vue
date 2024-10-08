@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>アイテム管理</h1>
+    <h1>All items</h1>
     <form @submit.prevent="createItem">
-      <label>アイテム</label>
+      <label>item</label>
       <input v-model="item" type="text" required />
-      <label>説明</label>
+      <label>description</label>
       <input v-model="description" type="text" required />
-      <button type="submit">作成</button>
+      <button type="submit">create</button>
     </form>
 
     <ul>
