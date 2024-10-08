@@ -1,24 +1,28 @@
 <template>
   <div>
     <!-- タイトルをクリックでトップページに遷移するよう修正 -->
-    <h1 @click="goToHome" style="cursor: pointer;">アイテム詳細</h1>
+    <h1 @click="goToHome" style="cursor: pointer;">Item Detail</h1>
 
     <div>
-      <p><strong>アイテム:</strong> {{ item }}</p>
-      <p><strong>説明:</strong> {{ description }}</p>
-      <button @click="enableEditing">編集</button>
+      <!-- アイテムと説明の表示部分 -->
+      <p><strong>item:</strong> 
+        <span v-if="!isEditing">{{ item }}</span>
+        <input v-else v-model="item" type="text" />
+      </p>
+
+      <p><strong>description:</strong> 
+        <span v-if="!isEditing">{{ description }}</span>
+        <input v-else v-model="description" type="text" />
+      </p>
+
+      <!-- 編集/保存/キャンセルボタン -->
+      <button v-if="!isEditing" @click="enableEditing">Edit</button>
+      <button v-else @click="updateItem">Save</button>
+      <button v-if="isEditing" @click="cancelEditing">Cancel</button>
     </div>
 
-    <div v-if="isEditing">
-      <label>アイテム</label>
-      <input v-model="item" type="text" />
-      <label>説明</label>
-      <input v-model="description" type="text" />
-      <button @click="updateItem">保存</button>
-      <button @click="cancelEditing">キャンセル</button>
-    </div>
-
-    <button @click="deleteItem">削除</button>
+    <!-- 削除ボタン -->
+    <button @click="deleteItem">Delete</button>
   </div>
 </template>
 
