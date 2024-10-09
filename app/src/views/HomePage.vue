@@ -10,8 +10,10 @@
     </form>
 
     <ul>
-      <li v-for="(doc, index) in items" :key="index" @click="goToDetail(doc.id)">
-        {{ doc.data().item }} - {{ doc.data().description }}
+       <li v-for="(doc, index) in items" :key="index">
+        <span @click="goToDetail(doc.id)" style="cursor: pointer;">
+          {{ doc.data().item }} - {{ doc.data().description }}
+        </span>
       </li>
     </ul>
   </div>
