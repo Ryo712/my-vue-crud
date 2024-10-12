@@ -11,13 +11,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'  # Node.js 18を指定
+
       - run: npm install
       - run: npm run build
-      - run: cp .nojekyll dist/.nojekyll  # .nojekyllファイルをdistフォルダにコピー
+
+      # .nojekyllファイルを正しくコピーするステップ
+      - run: cp app/.nojekyll app/dist/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
