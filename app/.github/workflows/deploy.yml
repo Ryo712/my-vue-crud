@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # ここにデプロイしたいブランチ名を指定
+      - main  # デプロイしたいブランチ名
 
 jobs:
   build:
@@ -14,11 +14,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'  # Node.js 18を指定
       - run: npm install
       - run: npm run build
+      - run: cp .nojekyll dist/.nojekyll  # .nojekyllファイルをdistフォルダにコピー
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist  # distフォルダをGitHub Pagesにデプロイ
