@@ -1,12 +1,12 @@
 <template>
   <div>
     <h1>All items</h1>
-    <form @submit.prevent="createItem">
-      <label>item</label>
-      <input v-model="item" type="text" required />
-      <label>description</label>
-      <input v-model="description" type="text" required />
-      <button type="submit">create</button>
+    <form @submit.prevent="createItem" style="display: flex; flex-direction: column; max-width: 400px; margin-bottom: 20px;">
+      <label style="font-weight: bold; margin-bottom: 5px;">item</label>
+      <input v-model="item" type="text" required style="margin-bottom: 20px; padding: 5px;" />
+      <label style="font-weight: bold; margin-bottom: 5px;">description</label>
+      <input v-model="description" type="text" required style="margin-bottom: 20px; padding: 5px;" />
+      <button type="submit" style="width: 80px; padding: 5px 10px;">create</button>
     </form>
 
     <ul>
@@ -18,6 +18,7 @@
     </ul>
   </div>
 </template>
+
 
 <script>
 import { ref, onMounted } from 'vue';
