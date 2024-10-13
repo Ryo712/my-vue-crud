@@ -8,7 +8,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(my-vue-crud),
+  history: createWebHistory('/my-vue-crud/'),
   routes
 });
 
